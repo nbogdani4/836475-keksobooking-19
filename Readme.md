@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Николай Богданов](https://up.htmlacademy.ru/javascript/19/user/836475).
-* Наставник: `Неизвестно`.
+* Наставник: `undefined`.
 
 ---
 
