@@ -118,21 +118,21 @@ function createCardElement(contextData) {
   return newCard;
 }
 
-  function getFragmentWithPins(advertisements) {
-    var fragment = document.createDocumentFragment();
-    for (var i = 0; i < advertisements.length; i++) {
-      fragment.appendChild(createPinElement(advertisements[i]));
-    }
-    return fragment;
+function getFragmentWithPins(advertisements) {
+  var fragment = document.createDocumentFragment();
+  for (var i = 0; i < advertisements.length; i++) {
+    fragment.appendChild(createPinElement(advertisements[i]));
   }
+  return fragment;
+}
 
-  function getFragmentWithCards(advertisements) {
-    var fragmentWithCards = document.createDocumentFragment();
-    for (var i = 0; i < advertisements.length; i++) {
-      fragmentWithCards.appendChild(createCardElement(advertisements[i]));
-    }
-    return fragmentWithCards;
+function getFragmentWithCards(advertisements) {
+  var fragmentWithCards = document.createDocumentFragment();
+  for (var i = 0; i < advertisements.length; i++) {
+    fragmentWithCards.appendChild(createCardElement(advertisements[i]));
   }
+  return fragmentWithCards;
+}
 
 var advertisements = getAdvertisementsArray(ADVERTISEMENTS_COUNT);
 advertisementsMap.querySelector('.map__pins').appendChild(getFragmentWithPins(advertisements));
