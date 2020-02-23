@@ -1,12 +1,12 @@
 'use strict';
 
-var OFFER_TYPE = ["palace", "flat", "house", "bungalo"];
-var TIME = ["12:00", "13:00", "14:00"];
-var FEATURES = ["wifi", "dishwasher", "parking", "washer", "elevator", "conditioner"]
-var PHOTOS = ["http://o0.github.io/assets/images/tokyo/hotel1.jpg", "http://o0.github.io/assets/images/tokyo/hotel2.jpg", "http://o0.github.io/assets/images/tokyo/hotel3.jpg"]
+var OFFER_TYPE = ['palace', 'flat', 'house', 'bungalo'];
+var TIME = ['12:00', '13:00', '14:00'];
+var FEATURES = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+var PHOTOS = ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg'];
 var ADVERTISEMENTS_COUNT = 8;
 var X_MIN = 0;
-var X_MAX = document.querySelector('.map').clientWidth;;
+var X_MAX = document.querySelector('.map').clientWidth;
 var Y_MIN = 130;
 var Y_MAX = 630;
 var PIN_WIDTH = 50;
@@ -21,16 +21,16 @@ function genRandomNumber(min, max) {
 function getRandomValue(arr) {
   var rand = genRandomNumber(0, arr.length - 1);
   return arr[rand];
-};
+}
 
 function getRandomLength(arr) {
-  var maxLength = genRandomNumber (1, arr.length);
-  return arr.slice(0, maxLength)
+  var maxLength = genRandomNumber(1, arr.length);
+  return arr.slice(0, maxLength);
 }
 
 function addLeadingZero(number) {
   return (number < 10 ? '0' : '') + number;
-};
+}
 
 function correctPinLocationX(x, pinWidth) {
   var correctLocation = x - (pinWidth / 2);
@@ -40,7 +40,7 @@ function correctPinLocationX(x, pinWidth) {
     correctLocation = X_MAX - pinWidth;
   }
   return correctLocation;
-};
+}
 
 function correctPinLocationY(y, pinHeight) {
   var correctLocation = y - pinHeight;
@@ -48,34 +48,34 @@ function correctPinLocationY(y, pinHeight) {
     correctLocation = Y_MIN;
   }
   return correctLocation;
-};
+}
 
 function genAdvertisement(num) {
   var advertisement = {
 
-    "author": {
-      "avatar": "img/avatars/user" + addLeadingZero(num) + ".png",
+    'author': {
+      'avatar': 'img/avatars/user' + addLeadingZero(num) + '.png',
     },
 
-    "offer": {
-      "title": "Заголовок",
-      "address": "600, 350",
-      "price": 350,
-      "type": getRandomValue(OFFER_TYPE),
-      "rooms": 6,
-      "guests": 3,
-      "checkin": getRandomValue(TIME),
-      "checkout": getRandomValue(TIME),
-      "features": getRandomLength(FEATURES),
-      "description": "строка с описанием",
-      "photos": getRandomLength(PHOTOS)
+    'offer': {
+      'title': 'Заголовок',
+      'address': '600, 350',
+      'price': 350,
+      'type': getRandomValue(OFFER_TYPE),
+      'rooms': 6,
+      'guests': 3,
+      'checkin': getRandomValue(TIME),
+      'checkout': getRandomValue(TIME),
+      'features': getRandomLength(FEATURES),
+      'description': 'строка с описанием',
+      'photos': getRandomLength(PHOTOS)
     },
 
-    "location": {
-      "x": correctPinLocationX(genRandomNumber(X_MIN, X_MAX), PIN_WIDTH),
-      "y": correctPinLocationY(genRandomNumber(Y_MIN, Y_MAX), PIN_HEIGHT),
+    'location': {
+      'x': correctPinLocationX(genRandomNumber(X_MIN, X_MAX), PIN_WIDTH),
+      'y': correctPinLocationY(genRandomNumber(Y_MIN, Y_MAX), PIN_HEIGHT),
     }
-  }
+  };
   return advertisement;
 }
 
@@ -104,7 +104,7 @@ function getFragmentWithPins(advertisements) {
     fragmentWithPins.appendChild(createPinElement(advertisements[i]));
   }
   return fragmentWithPins;
-};
+}
 
 var advertisements = getAdvertisementsArray(ADVERTISEMENTS_COUNT);
 document.querySelector('.map__pins').appendChild(getFragmentWithPins(advertisements));
